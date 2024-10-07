@@ -6,11 +6,11 @@ class Umidade: public Sensor{
 
     private:
 
-
+       //0 a 100 (%)
 
     public:
 
         float getUmidadeRelativa(){
-
+            //return valor;
         }
 };

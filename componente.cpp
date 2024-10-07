@@ -14,7 +14,7 @@ class Componente{
     public:
 
         Componente(bool ligado, bool conectado, int valor, string nome):
-        ligado{ligado},conectado{conectado},valor{valor},nome{nome}{}
+        ligado{false},conectado{false},valor{valor},nome{nome}{}
 
         void ligar(){
             this->ligado=true;
