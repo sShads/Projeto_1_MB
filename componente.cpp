@@ -4,7 +4,7 @@ using namespace std;
 
 class Componente{
 
-    private:
+    protected:
 
         bool ligado;
         bool conectado;
@@ -14,7 +14,8 @@ class Componente{
     public:
 
         Componente(bool ligado, bool conectado, int valor, string nome):
-        ligado{false},conectado{false},valor{valor},nome{nome}{}
+        ligado{false},conectado{false},valor{0},nome{nome}{}
+        Componente(string nome):nome{nome}{};
 
         void ligar(){
             this->ligado=true;
@@ -26,10 +27,12 @@ class Componente{
 
         bool conectar(){
             this->ligado=true;
+            return conectado;
         }
 
         void desconectar(){
             this->ligado=false;
+            cout<<"desconectado"<<endl;
         }
 
         int getValor(){

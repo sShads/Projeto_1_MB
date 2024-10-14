@@ -9,8 +9,9 @@ class Ventilador: public Atuador{
 
 
     public:
+        Ventilador():Atuador("Ventilador"){}
 
         bool setVelocidade(int velocidade){
-
+            return setValor(velocidade);
         }
 };

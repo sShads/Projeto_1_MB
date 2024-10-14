@@ -10,6 +10,17 @@ class Atuador: public Componente{
 
 
     public:
+        Atuador();
+        Atuador(bool ligado, bool conectado, int valor, string nome):
+        Componente(ligado,conectado,valor,nome){}
+        Atuador(string nome):Componente(nome){}
 
-        
+        bool setValor(int v){
+            if(v >= 0 && v<=100){
+                valor=v;
+                return true;
+            }
+            return false;
+            
+        }
 };

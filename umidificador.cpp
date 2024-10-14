@@ -9,8 +9,9 @@ class Umidificador: public Atuador{
 
 
     public:
+        Umidificador():Atuador("Umidificador"){}
 
-        virtual bool setConfiguracao(int config){
-
+        bool setConfiguracao(int config){
+            return setValor(config);
         }
 };

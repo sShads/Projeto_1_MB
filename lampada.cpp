@@ -9,8 +9,9 @@ class Lampada: public Atuador{
 
 
     public:
+        Lampada():Atuador("Lampada"){}
 
         bool setBrilho(int brilho){
-
+            return setValor(brilho);
         }
 };

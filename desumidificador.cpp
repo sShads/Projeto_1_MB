@@ -9,8 +9,9 @@ class Desumidificador: public Atuador{
 
 
     public:
+        Desumidificador():Atuador("Desumidificador"){}
 
         virtual bool setConfiguracao(int config){
-
+            return setValor(config);
         }
 };

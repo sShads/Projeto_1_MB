@@ -10,15 +10,20 @@ class Temperatura: public Sensor{
 
     public:
 
+        Temperatura():Sensor("Temperatura"){}
+        void atualizar(){
+            valor=rand() %51-10;
+        }
+
         float getTemperaturaEmC(){
-            //return temperatura;
+            return valor;
         }
         
         float getTemperaturaEmC(){
-            //(9*temperatura/5)+32
+            return (9*valor/5)+32;
         }
         
         float getTemperaturaEmC(){
-            //temperatura+273
+            return valor+273;
         }
 };

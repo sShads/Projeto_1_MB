@@ -10,6 +10,9 @@ class Sensor: public Componente{
 
 
     public:
+        Sensor();
+        Sensor(string nome):
+        Componente(nome){}
 
-        
+        //virtual void atualizar()=0;
 };
