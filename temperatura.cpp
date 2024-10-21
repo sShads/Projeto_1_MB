@@ -19,11 +19,11 @@ class Temperatura: public Sensor{
             return valor;
         }
         
-        float getTemperaturaEmC(){
+        float getTemperaturaEmF(){
             return (9*valor/5)+32;
         }
         
-        float getTemperaturaEmC(){
+        float getTemperaturaEmK(){
             return valor+273;
         }
 };

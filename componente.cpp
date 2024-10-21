@@ -12,7 +12,7 @@ class Componente{
         string nome;
 
     public:
-
+        Componente(){}
         Componente(bool ligado, bool conectado, int valor, string nome):
         ligado{false},conectado{false},valor{0},nome{nome}{}
         Componente(string nome):nome{nome}{};

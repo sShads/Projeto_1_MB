@@ -10,9 +10,12 @@ class Sensor: public Componente{
 
 
     public:
-        Sensor();
+        Sensor(){}
         Sensor(string nome):
         Componente(nome){}
 
-        //virtual void atualizar()=0;
+        virtual void atualizar(){
+            
+            
+        };
 };
