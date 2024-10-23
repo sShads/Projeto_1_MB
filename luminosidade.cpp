@@ -11,10 +11,6 @@ class Luminosidade: public Sensor{
     public:
         Luminosidade():Sensor("Luminosidade"){}
 
-        void atualizar(){
-            valor=rand()%251;
-        }
-
         void setLimiarClaridade(int limiar){
             this->limiarClaridade=limiar;
         }

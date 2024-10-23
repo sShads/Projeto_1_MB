@@ -7,40 +7,67 @@ class Sala{
 
     protected:
 
-        Atuador atuadores[3];
+        Atuador atuadores[4];
         Sensor sensores[3];     
 
     public:
         Sala(){}
+        /*Sala():sensores{Temperatura()}{}*/
 
-        void adicionarSensor(const Sensor& sensor, int n) {
-            sensores[n] = sensor;
+        void addS(const Sensor& sensor,int n){//integrar sensor a sala
+            sensores[n]=sensor;
+            sensores[n].conectar();
         }
 
-        void adicionarAtuador(const Atuador& atuador, int n) {
-            atuadores[n] = atuador;
+        void addA(const Atuador& atuador,int n){//integrar atuador a sala
+            atuadores[n]=atuador;
         }
 
-        /*void AtualizarSensores(){
-            for(int i=0;i<3;i++){
-                sensores[i].atualizar();
-                cout<<sensores[i].getNome()<<endl;
-                cout<<sensores[i].getValor()<<endl;
-                //((Temperatura)sensor).getValor();
-            }
-        }*/
         void AtualizarSensores(){
-            for(int i=0;i<1;i++){
-                sensores[0].atualizarT();
-                cout<<sensores[i].getNome()<<endl;
-                cout<<sensores[i].getValor()<<endl;
-                //((Temperatura)sensor).getValor();
+            if(sensores[0].conec()==true)sensores[0].atualizarT();
+            if(sensores[1].conec()==true)sensores[1].atualizarU();
+            if(sensores[2].conec()==true)sensores[2].atualizarL();
+            for(int i=0;i<3;i++){
+                if(sensores[i].conec()==true){
+                    cout<<sensores[i].getNome()<<" "<<sensores[i].getValor()<<endl;
+                    //sensores[i].conexao();
+                }
             }
         }
-
         void AtualizarAtuadores(){
+            if(atuadores[0].conec()==true){//temperatura
+                atuadores[0].setValor(sensores[0].getValor());
+                if (atuadores[0].getValor()>=25)
+                    atuadores[0].ligar();
+                else atuadores[0].desligar();
+            }
+            if(atuadores[1].conec()==true){//umidade
+                atuadores[1].setValor(sensores[1].getValor());
+                if (atuadores[1].getValor()<=35){
+                    atuadores[1].ligar();
+                    atuadores[2].desligar();
+                }else if(atuadores[1].getValor()>80){
+                    atuadores[1].desligar();
+                    atuadores[2].ligar();
+                }
+                else{
+                    atuadores[1].desligar();
+                    atuadores[2].desligar();
+                }
+            }
+            if(atuadores[3].conec()==true){//luminosidade
+                atuadores[3].setValor(sensores[2].getValor());
+                if (atuadores[3].getValor()<=150)
+                    atuadores[3].ligar();
+                else atuadores[3].desligar();
+            }        
 
-
+            for(int i=0;i<4;i++){
+                if(sensores[i].conec()==true){
+                    cout<<atuadores[i].getNome()<<" -> ";
+                    atuadores[i].estado();
+                }
+            }
         }
 };
 /*

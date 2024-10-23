@@ -10,12 +10,8 @@ class Temperatura: public Sensor{
 
     public:
 
-        Temperatura():Sensor("Temperatura"){}
-
-        void atualizar(){
-            valor=rand() %41;
-            cout<<"atualizar no temperatura"<<endl;
-        }
+        Temperatura():
+        Sensor("Temperatura"){}
 
         float getTemperaturaEmC(){
             return valor;

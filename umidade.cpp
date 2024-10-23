@@ -11,10 +11,6 @@ class Umidade: public Sensor{
     public:
         Umidade():Sensor("Umidade"){}
 
-        void atualizar(){
-            valor=rand()%101;
-        }
-
         float getUmidadeRelativa(){
             return valor;
         }
