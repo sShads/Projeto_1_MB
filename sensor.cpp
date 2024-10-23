@@ -14,8 +14,8 @@ class Sensor: public Componente{
         Sensor(string nome):
         Componente(nome){}
 
-        virtual void atualizar(){
-            
-            
+        virtual void atualizarT(){
+            cout<<"atualizar no sensor"<<endl;
+             valor=rand() %41;
         };
 };

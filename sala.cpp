@@ -5,7 +5,7 @@ using namespace std;
 
 class Sala{
 
-    private:
+    protected:
 
         Atuador atuadores[3];
         Sensor sensores[3];     
@@ -21,10 +21,20 @@ class Sala{
             atuadores[n] = atuador;
         }
 
-        void AtualizarSensores(){
+        /*void AtualizarSensores(){
             for(int i=0;i<3;i++){
                 sensores[i].atualizar();
-                ((Temperatura)sensores[0]).getValor();
+                cout<<sensores[i].getNome()<<endl;
+                cout<<sensores[i].getValor()<<endl;
+                //((Temperatura)sensor).getValor();
+            }
+        }*/
+        void AtualizarSensores(){
+            for(int i=0;i<1;i++){
+                sensores[0].atualizarT();
+                cout<<sensores[i].getNome()<<endl;
+                cout<<sensores[i].getValor()<<endl;
+                //((Temperatura)sensor).getValor();
             }
         }
 

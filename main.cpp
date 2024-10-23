@@ -1,7 +1,7 @@
 #include <iostream>
-#include "componente.cpp"
-#include "sensor.cpp"
-#include "atuador.cpp"
+//#include "componente.cpp"
+//#include "sensor.cpp"
+//#include "atuador.cpp"
 #include "temperatura.cpp"
 #include "luminosidade.cpp"
 #include "umidade.cpp"
@@ -14,48 +14,42 @@ using namespace std;
 // g++ *.cpp    ./a.out 
 
 int main(){
-    cout<<"teste"<<endl;
+    cout<<"inicio"<<endl;
+
+/*
+    Componente c(true,true,10,"sla");
+    cout<<c.getNome()<<endl;
+    Componente a("sla");
+    a.getNome();*/
 
     Sala sala_1;
     sala_1.adicionarSensor(Temperatura(),0);
     sala_1.adicionarSensor(Umidade(),1);
     sala_1.adicionarSensor(Luminosidade(),2);
-
+    /*sala_1.adicionarAtuador(Ventilador(),0);
+    sala_1.adicionarAtuador(Umidificador(),0);
+    sala_1.adicionarAtuador(Desumidificador(),0);
+    sala_1.adicionarAtuador(Lampada(),0);
+    Sala sala_2;
+    sala_2.adicionarSensor(Temperatura(),0);
+    sala_2.adicionarSensor(Umidade(),1);
+    sala_2.adicionarSensor(Luminosidade(),2);
+    sala_2.adicionarAtuador(Ventilador(),0);
+    sala_2.adicionarAtuador(Umidificador(),0);
+    sala_2.adicionarAtuador(Desumidificador(),0);
+    sala_2.adicionarAtuador(Lampada(),0);
+    Sala sala_3;
+    sala_3.adicionarSensor(Temperatura(),0);
+    sala_3.adicionarSensor(Umidade(),1);
+    sala_3.adicionarSensor(Luminosidade(),2);
+    sala_3.adicionarAtuador(Ventilador(),0);
+    sala_3.adicionarAtuador(Umidificador(),0);
+    sala_3.adicionarAtuador(Desumidificador(),0);
+    sala_3.adicionarAtuador(Lampada(),0);*/   
     sala_1.AtualizarSensores();
+
+    
+    
 
     return 0;
 }
-/*
-int main() {
-    srand(static_cast<unsigned int>(time(0)));
-
-    Sala sala1;
-    sala1.adicionarSensor(Temperatura());
-    sala1.adicionarSensor(Luminosidade());
-    sala1.adicionarAtuador(Ventilador());
-
-    Sala sala2;
-    sala2.adicionarSensor(Umidade());
-    sala2.adicionarSensor(Temperatura());
-    sala2.adicionarAtuador(Umidificador());
-
-    Sala sala3;
-    sala3.adicionarSensor(Luminosidade());
-    sala3.adicionarSensor(Umidade());
-    sala3.adicionarAtuador(Desumidificador());
-    sala3.adicionarAtuador(Lampada());
-
-    for (int i = 0; i < 1440; ++i) {
-        cout << "========================" << endl;
-        sala1.AtualizarSensores();
-        sala1.AtualizarAtuadores();
-        
-        sala2.AtualizarSensores();
-        sala2.AtualizarAtuadores();
-        
-        sala3.AtualizarSensores();
-        sala3.AtualizarAtuadores();
-    }
-
-    return 0;
-}*/
