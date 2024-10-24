@@ -46,14 +46,18 @@ int main(){
     sala_3.addA(Ventilador(),0);
     sala_3.addA(Lampada(),3); 
     
-    for(int i=0;i<3;i++){
-        cout<<endl<<"Atualizando Sensores da Sala "<<i+1<<endl<<endl;
-        salas[i]->AtualizarSensores();
-        cout<<endl<<"Atualizando Atuadores da Sala "<<i+1<<endl<<endl;
-        salas[i]->AtualizarAtuadores();
-    }
-    
-    
-
+    //sala_1.setLimiarClaridade(150);
+    for(int i=1;i<=1440;i++){
+        cout<<"Vez "<<i<<" de 1440"<<endl;
+        for(int i=0;i<3;i++){
+            cout<<endl<<"Atualizando Sensores da Sala "<<i+1<<endl<<endl;
+            salas[i]->AtualizarSensores();
+            salas[i]->printS();
+            cout<<endl<<"Atualizando Atuadores da Sala "<<i+1<<endl<<endl;
+            salas[i]->AtualizarAtuadores();
+            salas[i]->printA();
+            cout<<endl<<"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+        }
+    }cout<<"Fim da execução"<<endl;
     return 0;
 }

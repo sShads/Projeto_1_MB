@@ -25,11 +25,11 @@ class Componente{
             this->ligado=false;
         }
 
-        void estado(){
+        string estado(){
             if (ligado==true)
-                cout<<"ligado"<<endl;
+                return "ligado";
             else
-                cout<<"desligado"<<endl;
+                return "desligado";
         }
 
         bool conectar(){

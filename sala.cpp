@@ -8,7 +8,8 @@ class Sala{
     protected:
 
         Atuador atuadores[4];
-        Sensor sensores[3];     
+        Sensor sensores[3]; 
+        int T;    
 
     public:
         Sala(){}
@@ -21,19 +22,15 @@ class Sala{
 
         void addA(const Atuador& atuador,int n){//integrar atuador a sala
             atuadores[n]=atuador;
+            atuadores[n].conectar();
         }
 
         void AtualizarSensores(){
             if(sensores[0].conec()==true)sensores[0].atualizarT();
             if(sensores[1].conec()==true)sensores[1].atualizarU();
             if(sensores[2].conec()==true)sensores[2].atualizarL();
-            for(int i=0;i<3;i++){
-                if(sensores[i].conec()==true){
-                    cout<<sensores[i].getNome()<<" "<<sensores[i].getValor()<<endl;
-                    //sensores[i].conexao();
-                }
-            }
         }
+
         void AtualizarAtuadores(){
             if(atuadores[0].conec()==true){//temperatura
                 atuadores[0].setValor(sensores[0].getValor());
@@ -43,10 +40,10 @@ class Sala{
             }
             if(atuadores[1].conec()==true){//umidade
                 atuadores[1].setValor(sensores[1].getValor());
-                if (atuadores[1].getValor()<=35){
+                if (atuadores[1].getValor()<=45){
                     atuadores[1].ligar();
                     atuadores[2].desligar();
-                }else if(atuadores[1].getValor()>80){
+                }else if(atuadores[1].getValor()>70){
                     atuadores[1].desligar();
                     atuadores[2].ligar();
                 }
@@ -57,68 +54,54 @@ class Sala{
             }
             if(atuadores[3].conec()==true){//luminosidade
                 atuadores[3].setValor(sensores[2].getValor());
-                if (atuadores[3].getValor()<=150)
+                if (atuadores[3].getValor()<=200)
                     atuadores[3].ligar();
                 else atuadores[3].desligar();
             }        
+        }
 
-            for(int i=0;i<4;i++){
-                if(sensores[i].conec()==true){
-                    cout<<atuadores[i].getNome()<<" -> ";
-                    atuadores[i].estado();
-                }
+        float getTEmF(float T){
+            return (9*T/5)+32;
+            //getTemperaturaEmK(T);
+        }
+        float getTEmK(float T){
+            return T+273;
+        }
+
+        void printS(){
+            if(sensores[0].conec()==true){
+                cout<<sensores[0].getNome()<<" C-"<<sensores[0].getValor()<<" F-";
+                cout<<getTEmF(sensores[0].getValor())<<" K-"<<getTEmK(sensores[0].getValor())<<endl;
+            }
+            if(sensores[1].conec()==true)
+                cout<<sensores[1].getNome()<<" "<<sensores[1].getValor()<<"%"<<endl;
+                //sensores[i].conexao();
+            if(sensores[2].conec()==true)
+                cout<<sensores[2].getNome()<<" "<<sensores[2].getValor()<<" Lux"<<endl;
+        }
+
+        void printA(){
+            int n;
+            if(atuadores[0].conec()==true){
+                if(atuadores[0].getValor()<25)
+                    n=0;
+                else
+                    n=(atuadores[0].getValor()/5)-4;
+                cout<<atuadores[0].getNome()<<" -> "<<atuadores[0].estado()<<" Velocidade "<<n<<endl;
+            }
+            if(atuadores[1].conec()==true)cout<<atuadores[1].getNome()<<" -> "<<atuadores[1].estado()<<endl;
+            if(atuadores[2].conec()==true)cout<<atuadores[2].getNome()<<" -> "<<atuadores[2].estado()<<endl;
+            if(atuadores[3].conec()==true){
+                if(atuadores[3].getValor()>200)
+                    n=0;
+                else
+                    n=4-(atuadores[3].getValor()/50);
+                cout<<atuadores[3].getNome()<<" -> "<<atuadores[3].estado()<<" Intensidade "<<n<<endl;
             }
         }
+
+        float getValorSala(){
+            return sensores[0].getValor();
+        }
+
 };
-/*
-#include <iostream>
-#include "sensor.cpp"
-#include "atuador.cpp"
-
-using namespace std;
-
-class Sala {
-private:
-    Atuador atuadores[3]; // Array fixo para 3 atuadores
-    Sensor sensores[3];    // Array fixo para 3 sensores
-    int numSensores;       // Contador de sensores adicionados
-    int numAtuadores;      // Contador de atuadores adicionados
-
-public:
-    Sala() : numSensores(0), numAtuadores(0) {}
-
-    bool adicionarSensor(const Sensor& sensor) {
-        if (numSensores < 3) {
-            sensores[numSensores] = sensor; // Adiciona o sensor ao array
-            numSensores++;
-            return true;
-        }
-        return false; // Retorna falso se o array estiver cheio
-    }
-
-    bool adicionarAtuador(const Atuador& atuador) {
-        if (numAtuadores < 3) {
-            atuadores[numAtuadores] = atuador; // Adiciona o atuador ao array
-            numAtuadores++;
-            return true;
-        }
-        return false; // Retorna falso se o array estiver cheio
-    }
-
-    void AtualizarSensores() {
-        cout << "Atualizando sensores na sala:" << endl;
-        for (int i = 0; i < numSensores; i++) {
-            sensores[i].atualizar(); // Atualiza o sensor
-            cout << sensores[i].getNome() << " leu: " << sensores[i].getValor() << endl; // Exibe o valor lido
-        }
-    }
-
-    void AtualizarAtuadores() {
-        cout << "Atualizando atuadores na sala:" << endl;
-        for (int i = 0; i < numAtuadores; i++) {
-            atuadores[i].setValor(rand() % 101); // Define um valor aleatório de 0 a 100
-            cout << atuadores[i].getNome() << " configurado com valor: " << atuadores[i].getValor() << endl; // Exibe o valor configurado
-        }
-    }
-};
-*/

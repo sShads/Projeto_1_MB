@@ -13,15 +13,17 @@ class Temperatura: public Sensor{
         Temperatura():
         Sensor("Temperatura"){}
 
-        float getTemperaturaEmC(){
-            return valor;
+        float getTemperaturaEmC(float T){
+            return T;
+            getTemperaturaEmF(T);
         }
         
-        float getTemperaturaEmF(){
-            return (9*valor/5)+32;
+        float getTemperaturaEmF(float T){
+            return (9*T/5)+32;
+            getTemperaturaEmK(T);
         }
         
-        float getTemperaturaEmK(){
-            return valor+273;
+        float getTemperaturaEmK(float T){
+            return T+273;
         }
 };

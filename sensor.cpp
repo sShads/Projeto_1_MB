@@ -7,7 +7,7 @@ class Sensor: public Componente{
 
     private:
 
-
+        int t;
 
     public:
         Sensor(){}
@@ -16,11 +16,12 @@ class Sensor: public Componente{
 
         void atualizarT(){
              valor=rand()%20+15;
+             //return valor;
         };
         void atualizarU(){
             valor=rand()%101;
         };
         void atualizarL(){
-            valor=rand()%251;
+            valor=rand()%201+50;
         };
 };
