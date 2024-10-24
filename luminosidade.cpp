@@ -6,7 +6,7 @@ class Luminosidade: public Sensor{
 
     private:
 
-        int limiarClaridade;//0 a 250 Lux com limiar 150
+        int limiarClaridade;//20 a 250 Lux com limiar 200
 
     public:
         Luminosidade():Sensor("Luminosidade"){}
@@ -15,7 +15,7 @@ class Luminosidade: public Sensor{
             this->limiarClaridade=limiar;
         }
 
-        bool EstaClaro(){
+        bool EstaClaro(){//verifica se a sala esta clara o suficiente
             return valor>limiarClaridade;
         }
 };

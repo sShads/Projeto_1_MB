@@ -8,14 +8,13 @@ class Componente{
 
         bool ligado;
         bool conectado;
+        //o parametro "conectado" foi utilizado para verificar se o componente esta disponivel na sala em questao
         int valor;
         string nome;
 
     public:
         Componente(){}
-        /*Componente(bool ligado, bool conectado, int valor, string nome):
-        ligado{false},conectado{true},valor{0},nome{nome}{}*/
-        Componente(string nome):ligado(false),conectado(false),valor(0),nome{nome}{};
+        Componente(string nome):ligado(false),conectado(false),valor(0),nome{nome}{};//contrutor utilizado para componente
 
         void ligar(){
             this->ligado=true;
@@ -25,7 +24,7 @@ class Componente{
             this->ligado=false;
         }
 
-        string estado(){
+        string estado(){//retorna o estado em que esta o atuador
             if (ligado==true)
                 return "ligado";
             else
@@ -42,22 +41,15 @@ class Componente{
             cout<<"desconectado"<<endl;
         }
 
-        void conexao(){
-            if (conectado==true)
-                cout<<"conectado"<<endl;
-            else
-                cout<<"desconectado"<<endl;
-        }
-
-        bool conec(){
+        bool conexao(){//verifica se o componente esta conectado
             return conectado;
         }
 
-        string getNome(){
+        string getNome(){//retorna o nome do componente
             return this->nome;
         }
 
-        int getValor(){
+        int getValor(){//retorna o valor do componente
             return this->valor; 
         }
 };

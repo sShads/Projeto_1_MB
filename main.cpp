@@ -15,22 +15,18 @@ using namespace std;
 
 int main(){
     cout<<"inicio"<<endl;
-    srand(time(NULL));
-/*
-    Componente c(true,true,10,"sla");
-    cout<<c.getNome()<<endl;
-    Componente a("sla");
-    a.getNome();*/
-    Sala sala_1,sala_2,sala_3;
-    Sala* salas[3];
-    salas[0]=&sala_1;
+    srand(time(NULL));//randomiza cada execucao
+
+    Sala sala_1,sala_2,sala_3;//3 salas criadas
+    Sala* salas[3];//vetor de salas
+    salas[0]=&sala_1;//atribuindo um ponteiro para cada sala
     salas[1]=&sala_2;
     salas[2]=&sala_3;
     //Sala 1 -> todos sensores e atuadores
-    sala_1.addS(Temperatura(),0);
+    sala_1.addS(Temperatura(),0);//a funcao "addS" integra o sensor a sala
     sala_1.addS(Umidade(),1);
     sala_1.addS(Luminosidade(),2);
-    sala_1.addA(Ventilador(),0);
+    sala_1.addA(Ventilador(),0);//a funcao "addA" integra o atuador a sala
     sala_1.addA(Umidificador(),1);
     sala_1.addA(Desumidificador(),2);
     sala_1.addA(Lampada(),3);
@@ -47,9 +43,9 @@ int main(){
     sala_3.addA(Lampada(),3); 
     
     //sala_1.setLimiarClaridade(150);
-    for(int i=1;i<=1440;i++){
-        cout<<"Vez "<<i<<" de 1440"<<endl;
-        for(int i=0;i<3;i++){
+    for(int i=1;i<=1440;i++){//1440 repeticoes
+        cout<<"Vez "<<i<<" de 1440"<<endl;//mostra o numero da execucao
+        for(int i=0;i<3;i++){//atualizacao das 3 salas
             cout<<endl<<"Atualizando Sensores da Sala "<<i+1<<endl<<endl;
             salas[i]->AtualizarSensores();
             salas[i]->printS();
